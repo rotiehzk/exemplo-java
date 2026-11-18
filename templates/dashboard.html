@@ -1,0 +1,24 @@
+<main>
+  <h1>Dashboard</h1>
+  <p class='subtitulo'>Resumo da atividade</p>
+  <section class='cartoes' aria-label='Indicadores'>
+    <div class='cartao'><p>Salinas</p><strong class='numero'>{{salinas}}</strong></div>
+    <div class='cartao'><p>Quantidade produzida</p><strong class='numero'>{{producao}}</strong></div>
+    <div class='cartao'><p>Encomendas</p><strong class='numero'>{{encomendas}}</strong></div>
+  </section>
+  <section class='painel'>
+    <h2>Encomendas recentes</h2>
+    <div class='tabela'>
+      <table>
+        <thead><tr><th>N.º</th><th>Cliente</th><th>Data</th><th>Estado</th><th>Total</th></tr></thead>
+        <tbody>
+          {{#recentes}}
+          <tr><td>{{id_encomenda}}</td><td>{{cliente}}</td><td>{{data_encomenda}}</td><td>{{estado_encomenda}}</td><td>{{total_formatado}}</td></tr>
+          {{/recentes}}
+          {{#sem_encomendas}}<tr><td colspan='5'>Ainda não existem encomendas.</td></tr>{{/sem_encomendas}}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  <a class='botao' href='/produtos'>Gerir produtos</a>
+</main>

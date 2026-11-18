@@ -1,0 +1,29 @@
+<main>
+  <h1>Produtos</h1>
+  <p class='subtitulo'>Lista de produtos · máximo de 200 resultados por pesquisa</p>
+  {{#message}}<p role='status' class='aviso sucesso'>{{message}}</p>{{/message}}
+  <div class='barra'>
+    <form method='get' action='/produtos' class='pesquisa'>
+      <label for='q'>Pesquisar pelo nome</label>
+      <input id='q' name='q' value='{{search}}' maxlength='100'>
+      <button class='botao'>Pesquisar</button>
+    </form>
+    {{#admin}}<a class='botao' href='/produtos/novo'>Novo produto</a>{{/admin}}
+  </div>
+  <section class='painel'>
+    <div class='tabela'>
+      <table>
+        <thead><tr><th>ID</th><th>Nome</th><th>Categoria</th><th>Preço</th><th>Stock</th><th>Estado</th>{{#admin}}<th>Ações</th>{{/admin}}</tr></thead>
+        <tbody>
+          {{#produtos}}
+          <tr>
+            <td>{{id_produto}}</td><td>{{nome}}</td><td>{{categoria}}</td><td>{{preco_formatado}}</td><td>{{stock_disponivel}}</td><td>{{estado_produto}}</td>
+            {{#admin}}<td><a href='/produtos/editar?id={{id_produto}}'>Editar</a><a href='/produtos/eliminar?id={{id_produto}}'>Eliminar</a></td>{{/admin}}
+          </tr>
+          {{/produtos}}
+          {{#sem_produtos}}<tr><td colspan='{{colunas}}'>Nenhum produto encontrado.</td></tr>{{/sem_produtos}}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>

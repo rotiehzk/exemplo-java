@@ -1,0 +1,17 @@
+<main class='painel login'>
+  <h1>Exemplo</h1>
+  <p class='subtitulo'>Gestão de salinas</p>
+  {{#error}}<p role='status' class='aviso erro'>{{error}}</p>{{/error}}
+  <form method='post' action='/login'>
+    <input type='hidden' name='csrf' value='{{csrf}}'>
+    <div class='campo'>
+      <label for='email'>Email</label>
+      <input id='email' name='email' type='email' maxlength='100' autocomplete='username' required>
+    </div>
+    <div class='campo'>
+      <label for='password'>Palavra-passe</label>
+      <input id='password' name='password' type='password' maxlength='1024' autocomplete='current-password' required>
+    </div>
+    <button class='botao' type='submit'>Entrar</button>
+  </form>
+</main>

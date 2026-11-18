@@ -1,0 +1,46 @@
+<main>
+  <h1>{{title}}</h1>
+  <p><a href='/produtos'>← Voltar aos produtos</a></p>
+  <section class='painel'>
+    {{#error}}<p role='status' class='aviso erro'>{{error}}</p>{{/error}}
+    <form method='post' action='/produtos/guardar'>
+      <input type='hidden' name='csrf' value='{{csrf}}'>
+      {{#editar}}<input type='hidden' name='id_produto' value='{{id_produto}}'>{{/editar}}
+      <div class='campos'>
+        <div>
+          <label for='nome'>Nome</label>
+          <input id='nome' name='nome' type='text' value='{{nome}}' maxlength='100' required>
+        </div>
+        <div>
+          <label for='categoria_id'>Categoria</label>
+          <select id='categoria_id' name='categoria_id' required>
+            <option value=''>Selecionar</option>
+            {{#categorias}}<option value='{{id_categoria}}'{{#selected}} selected{{/selected}}>{{nome}}</option>{{/categorias}}
+          </select>
+        </div>
+        <div>
+          <label for='peso_unitario'>Peso unitário</label>
+          <input id='peso_unitario' name='peso_unitario' type='number' value='{{peso_unitario}}' min='0.01' max='99999999.99' step='0.01' required>
+        </div>
+        <div>
+          <label for='preco_venda'>Preço de venda (€)</label>
+          <input id='preco_venda' name='preco_venda' type='number' value='{{preco_venda}}' min='0' max='99999999.99' step='0.01' required>
+        </div>
+        <div>
+          <label for='stock_disponivel'>Stock disponível</label>
+          <input id='stock_disponivel' name='stock_disponivel' type='number' value='{{stock_disponivel}}' min='0' max='2147483647' step='1' required>
+        </div>
+        <div>
+          <label for='estado_produto'>Estado</label>
+          <select id='estado_produto' name='estado_produto'>
+            <option{{#ativo}} selected{{/ativo}}>Ativo</option>
+            <option{{#inativo}} selected{{/inativo}}>Inativo</option>
+          </select>
+        </div>
+      </div>
+      {{#sem_categorias}}<p class='aviso erro'>É necessário criar uma categoria na base de dados antes de guardar produtos.</p>{{/sem_categorias}}
+      <button class='botao'{{#sem_categorias}} disabled{{/sem_categorias}}>Guardar produto</button>
+      <a href='/produtos'>Cancelar</a>
+    </form>
+  </section>
+</main>

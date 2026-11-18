@@ -1,0 +1,13 @@
+<main>
+  <h1>Eliminar produto</h1>
+  <section class='painel'>
+    <p>Confirmas a eliminação de <strong>{{nome}}</strong>?</p>
+    <p>Se estiver associado a encomendas, a eliminação será impedida. Podes editar o estado para Inativo.</p>
+    <form method='post' action='/produtos/eliminar'>
+      <input type='hidden' name='csrf' value='{{csrf}}'>
+      <input type='hidden' name='id_produto' value='{{id_produto}}'>
+      <button class='botao'>Confirmar eliminação</button>
+      <a href='/produtos'>Cancelar</a>
+    </form>
+  </section>
+</main>

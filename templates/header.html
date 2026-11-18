@@ -1,0 +1,12 @@
+<header>
+  <a class='marca' href='/dashboard'>Exemplo</a>
+  <nav aria-label='Menu principal'>
+    <a href='/dashboard'{{#dashboard_atual}} aria-current='page'{{/dashboard_atual}}>Dashboard</a>
+    <a href='/produtos'{{#produtos_atual}} aria-current='page'{{/produtos_atual}}>Produtos</a>
+  </nav>
+  <form method='post' action='/logout'>
+    <input type='hidden' name='csrf' value='{{csrf}}'>
+    <span>{{email}}</span>
+    <button class='botao' type='submit'>Sair</button>
+  </form>
+</header>
